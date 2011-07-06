@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  devise :omniauthable
+  devise :database_authenticatable,
+         :omniauthable
+  #devise :omniauthable
   attr_accessible :email
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']

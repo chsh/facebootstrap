@@ -3,6 +3,9 @@ FacebookApp::Application.routes.draw do
       omniauth_callbacks: "users/omniauth_callbacks",
       sessions: 'users/sessions'
   }
+  resources :users
+
+  get "authenticated/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
