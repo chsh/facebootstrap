@@ -12,4 +12,5 @@ gem 'oa-oauth', require: 'omniauth/oauth'
 
 group :development, :test do
   gem 'jquery-rails'
+  gem 'rspec-rails'
 end
