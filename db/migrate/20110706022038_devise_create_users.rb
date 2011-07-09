@@ -2,6 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def self.up
     create_table(:users) do |t|
       t.database_authenticatable :null => false
+      t.text :facebook_profile
       t.timestamps
     end
 
