@@ -9,6 +9,7 @@ gem 'sqlite3'
 
 gem 'devise'
 gem 'oa-oauth', require: 'omniauth/oauth'
+gem 'koala'
 
 group :development, :test do
   gem 'jquery-rails'
