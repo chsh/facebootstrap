@@ -25,4 +25,13 @@ class Facebook
   def private_graph()
     @private_graph ||= Koala::Facebook::GraphAPI.new self.profile.credentials.token
   end
+
+  def self.public_graph
+    @@public_graph ||= Koala::Facebook::GraphAPI.new
+  end
+
+  def self.parse_signed_request(signed_request)
+    oauth = Koala::Facebook::OAuth.new(Config.app_id, Config.app_secret)
+    oauth.parse_signed_request(signed_request)
+  end
 end

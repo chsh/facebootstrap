@@ -5,7 +5,9 @@ FacebookApp::Application.routes.draw do
   }
   resources :users
 
-  get "authenticated/index"
+  get "authenticated/index", as: 'authenticated_index'
+  match 'canvas' => 'canvas#index'
+  match 'canvas/tab' => 'canvas#tab'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
