@@ -19,4 +19,10 @@ class Facebook
   end
   def profile; @profile end
 
+  def public_graph
+    @public_graph ||= Koala::Facebook::GraphAPI.new
+  end
+  def private_graph()
+    @private_graph ||= Koala::Facebook::GraphAPI.new self.profile.credentials.token
+  end
 end
