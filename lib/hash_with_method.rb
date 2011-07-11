@@ -10,6 +10,7 @@ class HashWithMethod < Hash
       end
       instance[key] = value
       instance.send :define_refer_method, key
+      instance.send :define_refer_method, "#{key}?", key if (value.is_a?(TrueClass) || value.is_a?(FalseClass))
     end
     instance
   end
@@ -18,9 +19,10 @@ class HashWithMethod < Hash
     return object unless object.is_a? Hash
     self.from object
   end
-  def define_refer_method(key)
+  def define_refer_method(key, refkey = nil)
+    refkey ||= key
     self.class.send :define_method, key do
-      self[key]
+      self[refkey]
     end
   end
 end

@@ -1,6 +1,68 @@
 <h1>Canvas#tab</h1>
 <p>Find me in app/views/canvas/tab.html.erb</p>
+<% if signed_request && signed_request.page.liked? %>
+    <div>Liked.</div>
+<% else %>
+    <div>Not liked</div>
+<% end %>
 <h2>Parsed signed request</h2>
 <p>
-  <%= simple_format @signed_request.inspect %>
+  <%= simple_format signed_request.inspect %>
 </p>
+<% if current_user %>
+<h2>current_user</h2>
+    <p>
+      <%= simple_format current_user.inspect %>
+    </p>
+<% end %>
+
+<hr/>
+<% unless current_user %>
+    <%= link_to 'login button', '#', id: 'login-link' %>
+    <script>
+        $(function() {
+            $('#login-link').click(function() {
+                FB.ui({
+                            method: 'auth.login',
+                            perms: '<%= Facebook::Config.app_scope %>'
+                        },
+                        function(response) {
+                            if (response && response.session) {
+                                $.post('<%= register_auth_token_path %>', {auth_token: response.session.access_token});
+                                window.location.reload();
+                            }
+                        }
+                );
+                return false;
+            });
+        });
+    </script>
+<% end %>
+<hr/>
+<%= link_to 'publish test', '#', id: 'publish-test' %>
+<script>
+  $(function(){
+      $('#publish-test').click(function(){
+          FB.ui(
+                  {
+                      method: 'feed',
+                      name: 'Facebook Dialogs',
+                      link: 'http://developers.facebook.com/docs/reference/dialogs/',
+                      picture: 'http://fbrell.com/f8.jpg',
+                      caption: 'Reference Documentation',
+                      description: 'Dialogs provide a simple, consistent interface for applications to interface with users.',
+                      message: 'Facebook Dialogs are easy!'
+                  },
+                  function(response) {
+                      if (response && response.post_id) {
+                          alert('Post was published.');
+                      } else {
+                          alert('Post was not published.');
+                      }
+                  }
+          );
+          return false;
+      })
+  });
+</script>
+

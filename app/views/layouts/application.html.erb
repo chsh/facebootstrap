@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-  <title>FacebookApp</title>
+  <title>Facebook App</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -10,5 +10,6 @@
 
 <%= yield %>
 
+<%= render 'layouts/facebook_api_init' %>
 </body>
 </html>
