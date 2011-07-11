@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     user_id = params_hash[:object]['id']
     if user = User.where(facebook_user_id: user_id).first
       user.update_attributes facebook_params: params_hash
+      user
     else # Create a user with a stub password.
       User.create!(facebook_user_id: user_id,
                    facebook_params: params_hash)
