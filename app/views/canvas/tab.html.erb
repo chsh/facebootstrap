@@ -28,8 +28,9 @@
                         },
                         function(response) {
                             if (response && response.session) {
-                                $.post('<%= register_auth_token_path %>', {auth_token: response.session.access_token});
-                                window.location.reload();
+                                $.post('<%= register_auth_token_path %>', {auth_token: response.session.access_token}, function() {
+                                    window.location.reload();
+                                });
                             }
                         }
                 );
