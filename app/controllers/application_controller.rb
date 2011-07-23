@@ -2,6 +2,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :parse_signed_request
 
+  def page?
+    return false unless signed_request
+    page ? true : false
+  end
+  def page
+    @page ||= signed_request.page
+  end
+  def canvas?
+    return false unless signed_request
+    !page?
+  end
   private
   def parse_signed_request
     if request.post? && params[:signed_request]

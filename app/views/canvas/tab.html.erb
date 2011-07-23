@@ -1,9 +1,14 @@
 <h1>Canvas#tab</h1>
 <p>Find me in app/views/canvas/tab.html.erb</p>
-<% if signed_request && signed_request.page.liked? %>
-    <div>Liked.</div>
+<h2>is page?</h2>
+<%= page? %>
+<h2>is canvas?</h2>
+<%= canvas? %>
+<h2>Liked?</h2>
+<% if page? %>
+    <%= page.liked? %>
 <% else %>
-    <div>Not liked</div>
+    unknown
 <% end %>
 <h2>Parsed signed request</h2>
 <p>
