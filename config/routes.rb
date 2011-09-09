@@ -1,4 +1,4 @@
-FacebookApp::Application.routes.draw do
+Facebootstrap::Application.routes.draw do
   devise_for :users, controllers: {
       omniauth_callbacks: "users/omniauth_callbacks",
       sessions: 'users/sessions'
