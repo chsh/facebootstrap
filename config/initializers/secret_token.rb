@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-FacebookApp::Application.config.secret_token = '93ecee75329859fbf6581de2dcf36df809721cbe41dfaa0a076d491704774af87787e9ad9ca54764c8a3305fd593cbfb8c0584baa11c31eb91af2096df60b2c4'
+Facebootstrap::Application.config.secret_token = 'd67ddd4b3f85860274548057893ccd0773529e41a63d77adaae3cd9d779fac7e51cc94835f754a87322f02d5c23636e6ba9223a60070ec9f63069fad932f42bc'
