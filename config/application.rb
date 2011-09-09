@@ -17,7 +17,7 @@ end
 
 module Facebootstrap
   class Application < Rails::Application
-    Version = '0.0.5'
+    Version = '0.0.6'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
